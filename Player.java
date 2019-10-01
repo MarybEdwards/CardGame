@@ -12,7 +12,7 @@ public class Player{
 		this.name  = name;
 		this.order = order;
 	}
-	public List<IndCards> getHand() {
+	/*public List<IndCards> getHand() {
 		return hand;
 	}
 	public List<IndCards> getStable() {
@@ -36,13 +36,13 @@ public class Player{
 	public int getHandSize () {
 		return hand.size();
 	}
-	
+	*/
 	public void addTo(IndCards addedCard, List<IndCards> placement) {
 		placement.add(addedCard);
-		if (addedCard.getType().equals("special")) {
-			unicornAffects(addedCard.getName());
-		}else if (addedCard.getType().equals("upgrade")||addedCard.getType().equals("downgrade")) {
-			upgradeDowngradeAffects (addedCard.getName());
+		if (addedCard.type().equals("special")) {
+			unicornAffects(addedCard.name());
+		}else if (addedCard.type().equals("upgrade")||addedCard.type().equals("downgrade")) {
+			upgradeDowngradeAffects (addedCard.name());
 		}
 	}
 	
@@ -64,7 +64,7 @@ public class Player{
 			//METHOD FOR DISPLAYING CARD OF A TYPE FROM DISCORD- UNICORN 
 		}else if (cardName.equals("Narwhal Torpedo")) {
 			for (IndCards check: affectCards) {
-				if (check.getType().equals("downgrade")) {
+				if (check.type().equals("downgrade")) {
 					affectCards.remove(check);
 				}
 			}
@@ -82,7 +82,7 @@ public class Player{
 			//METHOD TO BE WRITTEN
 		}else if (cardName.equals("Queen Bee Unicorn")) {
 			for (IndCards basicSearch: cards.entireDeck()) {
-				if (basicSearch.getType().equals("basic")) {
+				if (basicSearch.type().equals("basic")) {
 					basicSearch.changePlayable();
 				}
 			}
@@ -92,7 +92,7 @@ public class Player{
 			//METHOD FOR DISCARDING A CARD
 		}else if (cardName.equals("Ginormous Unicorn")) {
 			for (IndCards check: hand) {
-				if (check.getType().equals("instant")) {
+				if (check.type().equals("instant")) {
 					check.changePlayable();
 				}
 			}
@@ -135,7 +135,7 @@ public class Player{
 			showHand = true;
 		}else if (cardName.equals("Slow Down")) {
 			for (IndCards check: hand) {
-				if (check.getType().equals("instant")) {
+				if (check.type().equals("instant")) {
 					check.changePlayable();
 				}
 			}
@@ -152,7 +152,7 @@ public class Player{
 			//MODIFY UNICORNS AFFECT TO TURN OFF IF FALSE
 		}else if (cardName.equals("Broken Stable")) {
 			for (IndCards check: hand) {
-				if (check.getType().equals("upgrade")) {
+				if (check.type().equals("upgrade")) {
 					check.changePlayable();
 				}
 			}
