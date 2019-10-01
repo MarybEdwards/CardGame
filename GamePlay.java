@@ -15,6 +15,7 @@ public class GamePlay {
 	public static JFrame gameBoard;
 	
 	public void setUp() {
+		//the beginning of game, in which the deck and nursery is initialized and shuffled 
 		mainDeck = cards.entireDeck();
 		nursery = cards.babyCards();
 		Collections.shuffle(mainDeck);
@@ -22,11 +23,17 @@ public class GamePlay {
 	}
 	
 	public void drawCard(Player currentPlayer) {
+		//the player clicks on the deck to draw a card and add to their hand 
 		if (!(drawNum == 0)) {
+			//players can only draw once, unless they have a special effect in their stable, this 
+			//ensures that the player doesn't draw more than allowed
 			currentPlayer.addTo(mainDeck.get(0), currentPlayer.getHand());
 			mainDeck.remove(0);
 			drawNum -= 1;
 		}else if (!(playNum == 0)) {
+			//Instead of playing their card, they may draw another card, this ensures that they have
+			//that option if they wanted to, but doesn't accidentally take away the amount of times they 
+			//can play if they haven't drawn yet
 			currentPlayer.addTo(mainDeck.get(0), currentPlayer.getHand());
 			mainDeck.remove(0);
 			playNum -= 1;
@@ -34,16 +41,24 @@ public class GamePlay {
 	}
 	
 	public void endTurn(Player currentPlayer) {
+		//called in case the something happens at the end of the player's turn
 		currentPlayer.endAffects();
 	}
 	
-	public Player findNextPlayer() {
+	public void findNextPlayer() {
+		//returns the next player in the playing order
+		playingOrder ++;
+		//increases playing order number so the program goes to the next person
+		if (playingOrder >= peoplePlaying.size()){
+			//for when the playing order resets 
+			playingOrder = 0;
+		}
 		for (Player findPlayer: peoplePlaying) {
+			//finds who has the current playing order by going through each player
 			if (findPlayer.getOrder() == playingOrder) {
-				return findPlayer;
+				currentPlayer = findPlayer;
 			}
 		}
-		return new Player("error", 20);
 	}
 	
 	public void playCard(Player currentPlayer, IndCards clickedCard) {
