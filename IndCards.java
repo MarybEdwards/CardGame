@@ -33,7 +33,7 @@ public class IndCards {
 		this.deathType = death;
 	}
 	
-	public int getRank() {
+	/*public int getRank() {
 		return ranking;
 	}
 	
@@ -64,7 +64,8 @@ public class IndCards {
 	public boolean getNeedBasic() {
 		return basicRequired;
 	}
-	
+	*/ 
+	//dont think that any of the above code is needed because there's a different way of calling for that information
 }
 
 
