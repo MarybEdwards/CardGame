@@ -27,14 +27,14 @@ public class GamePlay {
 		if (!(drawNum == 0)) {
 			//players can only draw once, unless they have a special effect in their stable, this 
 			//ensures that the player doesn't draw more than allowed
-			currentPlayer.addTo(mainDeck.get(0), currentPlayer.getHand());
+			currentPlayer.addTo(mainDeck.get(0), currentPlayer.hand());
 			mainDeck.remove(0);
 			drawNum -= 1;
 		}else if (!(playNum == 0)) {
 			//Instead of playing their card, they may draw another card, this ensures that they have
 			//that option if they wanted to, but doesn't accidentally take away the amount of times they 
 			//can play if they haven't drawn yet
-			currentPlayer.addTo(mainDeck.get(0), currentPlayer.getHand());
+			currentPlayer.addTo(mainDeck.get(0), currentPlayer.hand());
 			mainDeck.remove(0);
 			playNum -= 1;
 		}
@@ -55,18 +55,18 @@ public class GamePlay {
 		}
 		for (Player findPlayer: peoplePlaying) {
 			//finds who has the current playing order by going through each player
-			if (findPlayer.getOrder() == playingOrder) {
+			if (findPlayer.order() == playingOrder) {
 				currentPlayer = findPlayer;
 			}
 		}
 	}
 	
 	public void playCard(Player currentPlayer, IndCards clickedCard) {
-		if (clickedCard.getPlayable()) {
-			currentPlayer.removeFrom(clickedCard, currentPlayer.getHand());
-			if( clickedCard.getType().equals("special") || clickedCard.getType().equals("basic")){
-				currentPlayer.addTo(clickedCard, currentPlayer.getStable());
-			}else if (clickedCard.getType().equals("magic")) {
+		if (clickedCard.playable()) {
+			currentPlayer.removeFrom(clickedCard, currentPlayer.hand());
+			if( clickedCard.getType().equals("special") || clickedCard.type().equals("basic")){
+				currentPlayer.addTo(clickedCard, currentPlayer.stable());
+			}else if (clickedCard.type().equals("magic")) {
 				discardPile.add(clickedCard);
 			}else {
 				//click on player 
