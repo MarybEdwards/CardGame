@@ -1,27 +1,16 @@
 
 import java.util.List;
 import java.util.ArrayList;
-public class cards {
+public class Cards {
 	public final static String MAGIC_CARD = "magic", UPGRADE_CARD = "upgrade", DOWNGRADE_CARD = "downgrade", 
 			MAGIC_UNICORN = "special", BASIC_UNICORN = "basic", BABY_UNICORN = "baby", INSTANT_CARD = "instant";
 	public final static int DISCARD_ON_DEATH = 0, BRING_TO_HAND_ON_DEATH = 1, BRING_TO_NURSERY_ON_DEATH = 2, 
 			CANT_BE_DESTROYED = 3, SPECIAL_DEATH = 4, CONTINUOUS_EFFECT = 0, EFFECT_AT_BEG_OF_TURN = 1, 
 			EFFECT_ON_PLAY = 2, NO_EFFECTS = 3, EFFECT_AT_END_OF_TURN = 4;
 	public final static boolean BASIC_IS_NEEDED = true, BASIC_IS_NOT_NEEDED = false; 
-	/*death type 0 = discard
-	 * death type 1 = hand 
-	 * death type 2 = nursery
-	 * death type 3 = NEVER DESTROYED
-	 * death type 4 = special
-	 * timing 0 = always effect
-	 * timing 1 = beginning of turn effect
-	 * timing 2 = on play
-	 * timing 3 = no effects
-	 * timing 4 = end of turn
-	 * basicRequired = to play the card 
-	 */
-			
 		public static List<IndCards> entireDeck () {
+			//creates main deck that people play from, including the name, description, type of card, how it is detroyed
+			//and if it needs anything special to be played
 			List<IndCards> mainDeck = new ArrayList<IndCards>();
 			
 			
@@ -290,6 +279,8 @@ public class cards {
 		
 	
 	public static List<IndCards> babyCards(){
+		//creates nursery deck which only hold baby unicorns and that players typically can't play from except under
+		//special circumstances and at the beginning of the game where every player starts with a baby unicorn in the stable 
 		List<IndCards> nurseryDeck = new ArrayList<IndCards>();
 		for (int i = 0; i <= 11; i++) {
 			nurseryDeck.add(new IndCards("Baby Unicorn","If this card would be sacrificed, destroyed or returned to "
