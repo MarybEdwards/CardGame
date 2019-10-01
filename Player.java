@@ -9,6 +9,7 @@ public class Player{
 			showHand = true, barbedWire = false, playAffect = true;
 	
 	public Player (String name, int order) {
+		//constructor class for Player
 		this.name  = name;
 		this.order = order;
 	}
@@ -37,17 +38,23 @@ public class Player{
 		return hand.size();
 	}
 	*/
+	
+	
 	public void addTo(IndCards addedCard, List<IndCards> placement) {
+		//puts the card into the player's stable, or affect display
 		placement.add(addedCard);
 		if (addedCard.type().equals("special")) {
+			//searches through magical unicorn cards for special effects when it enters stable
 			unicornAffects(addedCard.name());
 		}else if (addedCard.type().equals("upgrade")||addedCard.type().equals("downgrade")) {
+			//searches through upgrades and downgrades for special effects when it enters stable
 			upgradeDowngradeAffects (addedCard.name());
 		}
 	}
 	
 	
 	public void removeFrom(IndCards removedCard, List<IndCards> takenFrom) {
+		//takes card from stable, or affect display
 		takenFrom.remove(removedCard);
 	}
 
