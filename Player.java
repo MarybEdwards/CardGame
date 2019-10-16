@@ -2,10 +2,10 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Player{
-	public String name;
-	public int order, playNum = 1, drawNum = 1, maxStableCards = 20, handSize;
-	public List<IndCards> stable, hand, affectCards;
-	public boolean bringBaby = false, differentDeath = false, bringBasic = false, blockable = true, destroyable = true,
+	private String name;
+	private int order, playNum = 1, drawNum = 1, maxStableCards = 20, handSize;
+	private List<IndCards> stable, hand, affectCards;
+	private boolean bringBaby = false, differentDeath = false, bringBasic = false, blockable = true, destroyable = true,
 			showHand = true, barbedWire = false, playAffect = true;
 	
 	public Player (String name, int order) {
@@ -13,7 +13,7 @@ public class Player{
 		this.name  = name;
 		this.order = order;
 	}
-	/*public List<IndCards> getHand() {
+	public List<IndCards> getHand() {
 		return hand;
 	}
 	public List<IndCards> getStable() {
@@ -37,8 +37,8 @@ public class Player{
 	public int getHandSize () {
 		return hand.size();
 	}
-	*/
 	
+
 	
 	public void addTo(IndCards addedCard, List<IndCards> placement) {
 		//puts the card into the player's stable, or affect display
@@ -58,7 +58,7 @@ public class Player{
 		takenFrom.remove(removedCard);
 	}
 
-	public void unicornAffects(String cardName) {
+	private void unicornAffects(String cardName) {
 		if (cardName.equals("Swift Flying Unicorn")) {
 			//MAKE METHOD FOR DISPLAYING CARD OF A TYPE FROM DISCARD- INSTANT
 		}else if (cardName.equals("Majestic Flying Unicorn")) {
@@ -121,7 +121,7 @@ public class Player{
 	
 	
 	
-	public void upgradeDowngradeAffects (String cardName) {
+	private void upgradeDowngradeAffects (String cardName) {
 		if (cardName.equals("Extra Tail")) {
 			drawNum = 2;
 		}else if (cardName.equals("Rainbow Mane")) {
